@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_template_inherit_form_view" model="ir.ui.view">
+        <field name="name">Product template</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position='after'>
+                <field name="product_warranty" string ="Bảo hành sản phẩm"/>
+            </xpath>
+
+            <xpath expr="//field[@name='barcode']" position='after'>
+                <field name="discount_code" string ="mã giảm giá"/>
+            </xpath>
+
+             <xpath expr="//field[@name='barcode']" position='after'>
+                <field name="date_to"/>
+            </xpath>
+
+             <xpath expr="//field[@name='barcode']" position='after'>
+                <field name="date_from" />
+            </xpath>
+
+            <xpath expr="//field[@name='barcode']" position='after'>
+                <field name="check" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

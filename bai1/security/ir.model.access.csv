@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bai1_advance_sale,bai1.advance_sale,model_customer,bai1.group_advance_sale,1,1,0,0
+access_bai1_manager,bai1.manager,model_customer,bai1.group_manager,1,1,1,1

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="model_tree_view" model="ir.ui.view">
+        <field name="name">product.tree</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='list_price']" position="before">
+                <field name="product_warranty"/>
+            </xpath>
+            <xpath expr="//field[@name='list_price']" position="before">
+                <field name="warranty"/>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record id="model_form_view" model="ir.ui.view">
+        <field name="name">product.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='barcode']" position="before">
+                <field name="product_warranty"/>
+            </xpath>
+        </field>
+    </record>
+
+<!--     <record id="product_search_view" model="ir.ui.view">-->
+<!--        <field name="name">product_search_view</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--         <field name="inherit_id" ref="product.product_template_tree_view"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//field[@name='barcode']" position="before">-->
+<!--                <field name="warranty"/>-->
+<!--                   <field name="check2"/>-->
+<!--                   <filter name="filter_product" string="filter product"-->
+<!--                        domain="[('check2','=',True)]"/>-->
+<!--            </xpath>-->
+<!--&lt;!&ndash;            <search string="search">&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="warranty"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <field name="check2"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <filter name="filter_product" string="filter product"&ndash;&gt;-->
+<!--&lt;!&ndash;                        domain="[('check2','=',True)]"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            </search>&ndash;&gt;-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--     <record id="customer_action" model="ir.actions.act_window">-->
+<!--        <field name="name">productfield</field>-->
+<!--        <field name="search_view_id" ref="product_search_view"/>-->
+<!--        <field name="res_model">product.template</field>-->
+<!--&lt;!&ndash;        <field name="view_mode">tree,form</field>&ndash;&gt;-->
+<!--&lt;!&ndash;        <field name="view_ids"&ndash;&gt;-->
+<!--&lt;!&ndash;                   eval="[(5, 0, 0),&ndash;&gt;-->
+<!--&lt;!&ndash;                          (0, 0, {'view_mode': 'tree', 'view_id': ref('model_tree_view')}),&ndash;&gt;-->
+<!--&lt;!&ndash;                          (0, 0, {'view_mode': 'form', 'view_id': ref('model_form_view')})]"/>&ndash;&gt;-->
+<!--    </record>-->
+
+
+
+</odoo>

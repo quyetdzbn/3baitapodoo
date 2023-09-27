@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="player_view_tree" model="ir.ui.view">
+            <field name="name">player.tree</field>
+            <field name="model">player</field>
+            <field name="arch" type="xml">
+                <tree string="PLayer">
+                    <field name="name"/>
+                    <field name="country"/>
+                    <field name="gender"/>
+                    <field name="position"/>
+                    <field name="height"/>
+                    <field name="weight"/>
+                </tree>
+            </field>
+        </record>
+        <record id="player_view_form" model="ir.ui.view">
+            <field name="name">name</field>
+            <field name="model">player</field>
+            <field name='arch' type='xml'>
+                <form string="Player">
+                    <sheet>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <div class="oe_title"></div>
+                        <group>
+                            <group>
+                                <field name="country"></field>
+                                <field name="gender"></field>
+                                <field name="date_of_birth"></field>
+                            </group>
+                            <group>
+                                <field name="position"></field>
+                                <field name="height"></field>
+                                <field name="weight"></field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="player_action" model="ir.actions.act_window">
+            <field name="name">Player</field>
+            <field name="res_model">player</field>
+            <field name="view_ids"
+                   eval="[(5, 0, 0),
+                          (0, 0, {'view_mode': 'form', 'view_id': ref('player_view_form')}),
+                          (0, 0, {'view_mode': 'tree', 'view_id': ref('player_view_tree')})]"/>
+        </record>
+
+
+        <menuitem id="player_menu" name="Players" groups="base.group_user"/>
+        <menuitem id="player_menu_1" name="Players" parent="player_menu" action="player_action"
+                  groups="base.group_user"/>
+    </data>
+</odoo>

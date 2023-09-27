@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_template_inherit_tree_view" model="ir.ui.view">
+        <field name="name">Product template</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+
+             <xpath expr="//field[@name='standard_price']" position='after'>
+                <field name="discount_code" string ="mã bảo hành"/>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position='after'>
+                <field name="product_warranty" string ="Bảo hành sản phẩm"/>
+            </xpath>
+            <xpath expr="//field[@name='standard_price']" position='after'>
+                <field name="check" />
+            </xpath>
+
+        </field>
+    </record>
+      <record id="product_warranty_search_view" model="ir.ui.view">
+        <field name="name">product_warranty_search_view</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <search string="customer search">
+                <field name="name"/>
+                  <field name="default_code"/>
+                 <field name="list_price"/>
+                 <field name="standard_price"/>
+                 <field name="check"/>
+                <filter name="filter_customer" string="test"
+                        domain="[('check','=',True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="customer_action" model="ir.actions.act_window">
+        <field name="name">CustomerField</field>
+        <field name="search_view_id" ref="product_warranty_search_view"/>
+        <field name="res_model">product.template</field>
+         <field name="domain">[('check','=',True)]</field>
+<!--        <field name="view_mode">tree,form</field>-->
+<!--        <field name="view_ids"-->
+<!--                   eval="[(5, 0, 0),-->
+<!--                          (0, 0, {'view_mode': 'tree', 'view_id': ref('customer_view_tree')}),-->
+<!--                          (0, 0, {'view_mode': 'form', 'view_id': ref('customer_view_form')})]"/>-->
+    </record>
+</odoo>

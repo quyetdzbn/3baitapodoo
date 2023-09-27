@@ -1,0 +1,48 @@
+<odoo>
+<record id="discount_form_view" model="ir.ui.view">
+    <field name="name">discount.form</field>
+    <field name="model">back.update.wizard</field>
+    <field name="arch" type="xml">
+        <form string="Product Form">
+            <group>
+             <field name="discount_code" string="Mã giảm giá"/>
+              <field name="product_ids" string="Thông tin sản phẩm"/>
+            </group>
+            <footer>
+                <button string="Update Product" name="update_wizard" type="object" class="oe_highlight"/>
+                <button string="Cancel" class="btn-default" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+      <record id="action_update" model="ir.actions.act_window">
+        <field name="name">update</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">back.update.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="discount_form_view"/>
+    </record>
+
+    <menuitem id="update" name="Update discount code"  parent="purchase.menu_purchase_root"
+              action="action_update" groups="base.group_user"/>
+
+
+<!--    <record id="action_update" model="ir.actions.act_window">-->
+<!--        <field name="name">Batch Update</field>-->
+<!--        <field name="res_model">back.update.wizard</field>-->
+<!--        <field name="binding_model_id" ref="model_product_template"/>-->
+<!--        <field name="view_mode">form</field>-->
+<!--        <field name="target">new</field>-->
+<!--        <field name="view_id" ref="discount_form_view"/>-->
+<!--        <field name="state">code</field>-->
+<!--        <field name="code">action = records.open_product_warranty_update_wizard()</field>-->
+<!--    </record>-->
+
+<!--    <act_window id="action_wizard_update" name="update" res_model="backup.date.wizard" view_mode="form"-->
+<!--                target="new"/>-->
+
+<!--    <menuitem id="menu_wizard_rent_books" parent="purchase.menu_purchase_root"-->
+<!--              action="action_wizard_update" sequence="20"/>-->
+</odoo>

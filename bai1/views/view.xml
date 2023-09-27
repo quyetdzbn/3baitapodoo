@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="customer_view_tree" model="ir.ui.view">
+        <field name="name">CustomerField.tree</field>
+        <field name="model">customer</field>
+        <field name="arch" type="xml">
+            <tree string="Customer">
+                <field name="name"/>
+                <field name="discount_code"/>
+                <field name="Sale_order_discount_estimated"/>
+            </tree>
+        </field>
+    </record>
+    <record id="player_view_form" model="ir.ui.view">
+        <field name="name">CustomerField.form</field>
+        <field name="model">customer</field>
+        <field name="arch" type="xml">
+            <form string="Customer">
+                <sheet>
+
+                        <label for="name"></label>
+                        <h1>
+                            <field name="name"></field>
+                        </h1>
+
+                    <group>
+                        <field name="discount_code"></field>
+                        <field name="Sale_order_discount_estimated"></field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="customer_action" model="ir.actions.act_window">
+        <field name="name">CustomerField</field>
+        <field name="res_model">customer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="customer_menu" name="CustomerField" groups="base.group_user"/>
+    <menuitem id="customer_menu_1" name="CustomerField" parent="customer_menu"
+              action="customer_action" groups="base.group_user"/>
+</odoo>
